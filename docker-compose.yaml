@@ -1,0 +1,25 @@
+name: grass-passive-income
+services:
+  chromium:
+    container_name: chromiumv2
+    environment:
+      - CHROME_CLI=https://chromewebstore.google.com/detail/grass-extension/ilehaonighjijnmpnagapkhpcdbhclfg
+      - PGID=1000
+      - PUID=1000
+      - TZ=Etc/UTC
+    image: lscr.io/linuxserver/chromium:latest
+    ports:
+      - target: 3000
+        published: "3000"
+        protocol: tcp
+      - target: 3001
+        published: "3001"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /chrome-grass
+        target: /config
+    network_mode: bridge
+    privileged: false
+
