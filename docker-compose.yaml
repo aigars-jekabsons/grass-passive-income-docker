@@ -2,6 +2,8 @@ name: grass-passive-income
 services:
   chromium:
     container_name: chromiumv2
+    # If SIGTRAP error is experienced while accessing different webpages, please add shm_size to your docker compose. This is a new requriments for the latest version of chromium
+    shm_size: '2gb' 
     environment:
       - CHROME_CLI=https://chromewebstore.google.com/detail/grass-extension/ilehaonighjijnmpnagapkhpcdbhclfg
       - PGID=1000
